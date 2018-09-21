@@ -44,6 +44,9 @@ app.get('*', (req,res) => {
     res.send('Not Found');
 })
 
-app.listen(8080, () => {
-    console.log('Server started on port 8080');
-})
+// app.listen(8080, () => {
+//     console.log('Server started on port 8080');
+// })
+
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => console.log(`app listening on port ${PORT}`))
