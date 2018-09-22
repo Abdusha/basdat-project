@@ -126,7 +126,21 @@
 			<div class="row">
 				<div class="col-md-7">
 					<h3>NBB Today</h3><hr>
+					<% nbbt.forEach(function(nbbt){ %>
 					<div class="post">
+						<div class="row">
+							<div class="col-md-3 col-sm-3">
+								<img src="img/default.png" alt="post" class="post-img">
+							</div>
+							<div class="col-md-9 col-sm-9">
+								<h4><%= nbbt.judul %></h4>
+								<p><%= nbbt.isi %></p>
+								<p align="right"><a href="#">read more</a></p>
+							</div>
+						</div>
+					</div>
+					<% }) %>
+					<!-- <div class="post">
 						<div class="row">
 							<div class="col-md-3 col-sm-3">
 								<img src="img/default.png" alt="post" class="post-img">
@@ -137,19 +151,7 @@
 								<p align="right"><a href="#">read more</a></p>
 							</div>
 						</div>
-					</div>
-					<div class="post">
-						<div class="row">
-							<div class="col-md-3 col-sm-3">
-								<img src="img/default.png" alt="post" class="post-img">
-							</div>
-							<div class="col-md-9 col-sm-9">
-								<h4>Lorem Ipsum</h4>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-								<p align="right"><a href="#">read more</a></p>
-							</div>
-						</div>
-					</div>
+					</div> -->
 					<div align="right">
 						<a href="#" title="see-more">see more. . .</a>
 					</div><br>

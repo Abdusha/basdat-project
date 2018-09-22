@@ -1,18 +1,51 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-
+const mongoose = require('mongoose');
 
 var app = express();
 
+mongoose.connect('mongodb://abdusha:amank2105@ds040017.mlab.com:40017/basdat-product', { useNewUrlParser: true }, (err,client) => {
+    if(err){
+        console.log('gagal')
+    } else{
+        console.log('berhasil')
+    }
+})
+
+
+
+const nbbt = mongoose.model('nbb_today', { judul: String, isi: String });
+nbbt.find({}, function (err, docs) {
+    // docs.forEach
+    console.log(docs)
+  });
+
+// nbbt.create({ judul: 'Portingan Kedua', isi: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.'  }, (err, result) => {
+//     if (err) {
+//       console.log('====================================');
+//       console.log(err);
+//       console.log('====================================');
+//     }
+
+//     console.log(result);
+    
+//   }
+//   )
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req,res) => {
-    res.render('home');
-})
+    nbbt.find({}, (err, docs)=>{
+        res.render('home', {
+            nbbt: docs
+        }),
+        console.log(docs)
+    })
+});
+
 app.get('/daruma', (req,res) => {
     res.render('daruma');
 })
@@ -43,10 +76,6 @@ app.get('/about', (req,res) => {
 app.get('*', (req,res) => {
     res.send('Not Found');
 })
-
-// app.listen(8080, () => {
-//     console.log('Server started on port 8080');
-// })
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => console.log(`app listening on port ${PORT}`))
