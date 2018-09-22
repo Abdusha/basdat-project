@@ -18,7 +18,7 @@ mongoose.connect('mongodb://abdusha:amank2105@ds040017.mlab.com:40017/basdat-pro
 const nbbt = mongoose.model('nbb_today', { judul: String, isi: String });
 nbbt.find({}, function (err, docs) {
     // docs.forEach
-    console.log(docs)
+    // console.log(docs)
   });
 
 // nbbt.create({ judul: 'Portingan Kedua', isi: 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which dont look even slightly believable.'  }, (err, result) => {
